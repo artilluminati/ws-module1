@@ -31,7 +31,7 @@
             <h3>
                 Стрижка + уход за шерстью
             </h3>
-            <a href="index.php#register" class="btn">
+            <a href="index.php#register" class="btn header-btn">
                 Зарегистрироваться
             </a>
         </div>
