@@ -12,7 +12,10 @@
 <body>
     <?php require('nav.php'); 
     
-    require_once('checklogin.php');
+    if (!checkadmin()){
+        echo '<div style="margin-top: 30px" class="container"><span>У вас нет доступа к этой странице. </span><a class="text-purple" href="/">Вернуться.</a></div>';
+        exit;
+    }
     ?>
     
 

@@ -33,6 +33,18 @@ if ($checkbox != 'checked') {
 } else{
     $q = "INSERT INTO `users` (`id`, `login`, `password`, `email`, `fio`) VALUES (NULL, '$login', '$pass', '$email', '$fio')";
     mysqli_query($connect, $q);
+    
+    $login = $_POST['login'];
+    $pass = md5($_POST['pass']);
+
+    $logins = mysqli_query($connect, "SELECT * FROM `users` WHERE `login` = '$login'");
+    $logins = mysqli_fetch_assoc($logins);
+
+    $_SESSION['authorized'] = true;
+    $_SESSION['login'] = $login;
+    $_SESSION['fio'] = $logins['fio'];
+    $_SESSION['uid'] = $logins['id'];
+
     header('Location: index.php?regerror=Успешная регистрация#register');
     exit();
 }

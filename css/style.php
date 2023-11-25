@@ -251,6 +251,7 @@
             display: flex;
             box-shadow:  1px 5px 10px #FFF0F8;
             border-radius: 8px;
+            margin-bottom: 30px;
             /* filter: drop-shadow(1px, 5px, 10px, #FFF0F8); */
         }
 
@@ -291,6 +292,10 @@
             justify-content: space-between;
             padding: 10px;
         }
+        .card-info{
+            display: flex;
+            flex-direction: column;
+        }
 
         /* ЗАЯВКА */
         .req-new{
@@ -311,6 +316,7 @@
             align-items: center;
             font-size: 12px;
             border-radius: 8px;
+            cursor:  pointer;
         }
 
         /* КАРТЧОКИ админ панель */

@@ -20,31 +20,41 @@
     $data = mysqli_query($connect, $q);
 
     $data = mysqli_fetch_all($data, MYSQLI_ASSOC);
+
+    $status_dict = [
+        "new"=> "Новая",
+        "processing"=> "В обработке",
+        "completed"=> "Услуга оказана"
+    ]
+
     ?>
 
     <section class="container my-requests col-2">
         <div class="req-cards">
             <h2>Мои заявки</h2>
-            <?php 
+            <?php foreach($data as $key => $row){ ?>
             <form class="card">
-                <img src="images/животные/2 (1).jpg" alt="">
+                <img src="<?php echo $row['img1'] ?>" alt="">
                 <div>
-                    <div>
-                        <span>Бобик</span>
-                        <select name="status" id="">
-                            <option value="new">Новая</option>
-                            <option value="processing">Обработка данных</option>
-                            <option value="completed">Услуга оказана</option>
-                        </select>
+                    <div class="card-info">
+                        <span><?php echo $row['name']?></span>
+                        <span class="text-blue"><?php echo $status_dict[$row['status']] ?></span>
                     </div>
-                    <div class="text-purple">Удалить</div>
+                    <a class="text-purple" href="delete.php?id=<?php echo $row['id'] ?>">Удалить</a>
                 </div>
-                
             </form>
+            <?php }; ?>
+            <?php if (!(array)$data){
+                echo '<p>
+                У вас ещё нет заявок.
+                </p>';
+            }
+            ?>
         </div>
         <div>
             <h2>Создание заявки</h2>
-            <form action="" class="req-new" method="post">
+            <form action="upload.php" class="req-new" method="post" enctype="multipart/form-data">
+                <!-- <input type="hidden" name="MAX_FILE_SIZE" value="30000" /> -->
                 <label for="req-new-img" class="form-img">
                     <div>
                         <p>
@@ -54,22 +64,30 @@
                         <p>
                             фото в формате .jpeg или .bmp размером до 2 Мб
                         </p>
-                        <input type="file" id="req-new-img" class="hidden"src="" alt="">
+                        
                     </div>
-                    
                 </label>
-                
-                <input type="text" name="" id="" placeholder="Кличка животного">
+                <input type="file" name="fileToUpload" id="req-new-img" class="" accept="image/*">
+                <input type="text" name="name" placeholder="Кличка животного">
                 <input type="submit" class="btn" value="Отправить">
+                <?php $out = htmlspecialchars($_GET["out"]);
+                    // var_dump($register_err);
+                    if(isset($out)){
+                        echo '<span class="text-purple">'.$out.'</span>';
+                    }
+                ?>
             </form>
+
+            
         </div>
         
     </section>
+    <?php if (checkadmin()){?>
 
     <section class="container">
         <a class="btn" href="groom.php">Перейти в админ-панель</a>
     </section>
-    
+    <?php }; ?>
 
 
     <?php

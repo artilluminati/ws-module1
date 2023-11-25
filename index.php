@@ -38,7 +38,7 @@
     </header>
 
     <section class="container photos">
-        <h1 class="text-center">Последние преображения питомцев</h1>
+        <h1 class="text-center">Последние преображения пушистых друзей</h1>
         <div class="cards col-2">
             <?php foreach($data as $row){
                 ?>

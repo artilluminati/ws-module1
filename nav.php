@@ -1,6 +1,6 @@
 <nav class="container col-2">
         <a class="logo" href="index.php">
-            <img src="images/логотипы/logo5.png" alt="">
+            <img src="logo/logo_groom.png" alt="">
         </a>
         <div class="burger-container" onclick="openMenu(this)">
             <div class="bar1"></div>
@@ -16,7 +16,7 @@
                 <span>    
                 Выход
                 </span>
-                <img src="images/photoshop/Group 35.svg" alt="">
+                <img src="logo/icon.svg" alt="">
                 <div class="nav-login-hidden">
 
                 </div>
@@ -27,7 +27,7 @@
                 <span>    
                 Войти
                 </span>
-                <img src="images/photoshop/Group 35.svg" alt="">
+                <img src="logo/icon.svg" alt="">
                 <div class="nav-login-hidden">
 
                 </div>
