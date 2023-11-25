@@ -10,11 +10,22 @@
     <?php require_once("links.php");?>
 </head>
 <body>
-    <?php require('nav.php'); ?>
+    <?php require('nav.php'); 
+
+    require_once('checklogin.php');
+
+    $uid = $_SESSION['uid'];
+    $q = "SELECT * FROM requests WHERE `uid` = '$uid'";
+
+    $data = mysqli_query($connect, $q);
+
+    $data = mysqli_fetch_all($data, MYSQLI_ASSOC);
+    ?>
 
     <section class="container my-requests col-2">
         <div class="req-cards">
             <h2>Мои заявки</h2>
+            <?php 
             <form class="card">
                 <img src="images/животные/2 (1).jpg" alt="">
                 <div>
@@ -61,6 +72,7 @@
     
 
 
-    <?php require('footer.php');?>
+    <?php
+    require('footer.php');?>
 </body>
 </html>

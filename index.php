@@ -14,15 +14,14 @@
     $q = 'SELECT * FROM requests ORDER BY id DESC LIMIT 4';
 
     $data = mysqli_query($connect, $q);
-    // var_dump($data);
+
     $data = mysqli_fetch_all($data, MYSQLI_ASSOC);
     
-    // var_dump($data);
     ?>
 
     <header class="col-2 container">
         <div>
-            <img src="images/photoshop/1 (2).png" alt="">
+            <img src="images/photoshop/1 (2).png">
         </div>
         <div>
             <h1>Роскошный<br>
@@ -65,16 +64,16 @@
             <form id="reg-form" action="register.php" method="post" class="reg-form">
                 
                 <?php $register_err = htmlspecialchars($_GET["regerror"]);
-                    var_dump($register_err);
+                    // var_dump($register_err);
                     if(isset($register_err)){
-                        echo '<span>'.$register_err.'</span>';
+                        echo '<span class="text-purple">'.$register_err.'</span>';
                     }
                 ?>
-                <input type="text" name="fio" id="reg-fio" placeholder="ФИО">
-                <input type="text" name="login" id="reg-login" placeholder="Логин">
-                <input type="email" name="email" id="reg-email" placeholder="E-mail">
-                <input type="password" name="pass" id="reg-pass" placeholder="Пароль">
-                <input type="password" name="pass-accept" id="reg-pass-accept" placeholder="Повтор пароля">
+                <input type="text" name="fio" id="reg-fio" placeholder="ФИО" required>
+                <input type="text" name="login" id="reg-login" placeholder="Логин" required>
+                <input type="email" name="email" id="reg-email" placeholder="E-mail" required>
+                <input type="password" name="pass" id="reg-pass" placeholder="Пароль" required>
+                <input type="password" name="pass-accept" id="reg-pass-accept" placeholder="Повтор пароля" required>
                 <label class="checkbox">Согласие на обработку персональных данных
                     <input type="checkbox" name="checkbox-data" value="checked">
                     <span class="checkmark"></span>
@@ -83,10 +82,16 @@
                 <a class="text-center reg-to-log" width="100%" onclick="hideReg()">У меня уже есть аккаунт</a>
             </form>
 
-            <form class="hidden reg-form" id="log-form" action="" method="post">
+            <form class="hidden reg-form" id="log-form" action="login.php" method="post">
+                <?php
+                $login_err = htmlspecialchars($_GET["logerror"]);
+
+                if(isset($login_err)){
+                        echo '<span class="text-purple">'.$login_err.'</span>';
+                    }?>
                 <input type="text" name="login" id="log-login" placeholder="Логин">
                 <input type="password" name="pass" id="log-pass" placeholder="Пароль">
-                <input type="submit" value="Зарегистрироваться" class="btn">
+                <input type="submit" value="Авторизоваться" class="btn">
                 <a class="text-center reg-to-log" width="100%" onclick="hideLog()">Создать аккаунт</a>
             </form>
             

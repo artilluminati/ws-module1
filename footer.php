@@ -4,17 +4,32 @@
                 <img src="images/логотипы/logo5.png" alt="">
             </a>
             <div class="nav-menu">
-                <a href="index.php">Главная</a>
-                <a href="index.php#register">Онлайн запись</a>
-                <a href="user.php" class="nav-login">
-                    <span>    
-                    Войти
-                    </span>
-                    <img src="images/photoshop/Group 35.svg" alt="">
-                    <div class="nav-login-hidden">
+            <a href="index.php">Главная</a>
+            
+            <?php if ($_SESSION['authorized'] == true){?>
+            <a href="user.php">Онлайн запись</a>
+            <a href="logout.php" class="nav-login">
+                <span>    
+                Выход
+                </span>
+                <img src="images/photoshop/Group 35.svg" alt="">
+                <div class="nav-login-hidden">
 
-                    </div>
-                </a>
+                </div>
+            </a>
+            <?php } else { ?>
+            <a href="index.php#register" onclick="hideLog()">Онлайн запись</a>
+            <a href="index.php#register" class="nav-login" onclick="hideReg()">
+                <span>    
+                Войти
+                </span>
+                <img src="images/photoshop/Group 35.svg" alt="">
+                <div class="nav-login-hidden">
+
+                </div>
+            </a>
+
+            <?php } ?>
             </div>
         </nav>
         <div class="container info">
