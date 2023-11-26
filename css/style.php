@@ -42,6 +42,18 @@
             border-radius: 8px;
             border: 2px black solid;
         }
+        input::file-selector-button{
+            border: none;
+            border-radius: 8px;
+        }
+
+        select{
+            font-weight: 400;
+            word-wrap: break-word;
+            box-sizing: border-box;
+            border-radius: 8px;
+            border: 2px #2D1422 solid;
+        }
 
 
         /* ОСНОВНЫЕ КЛАССЫ */
@@ -140,6 +152,10 @@
             /* width: calc(4 * var(--gu)); */
             width: calc(4 * var(--gu) - 10px);
             max-width: 66.6666666667vh;
+        }
+
+        .content{
+            min-height: calc(100vh - 3 * var(--nav-height));
         }
 
 
@@ -279,12 +295,19 @@
         .cards .card > img{
             border-radius: 8px;
             width: calc(4 * var(--gu) - 10px);
+            height: calc(3 * var(--gu) - 10px);
+            object-fit: cover;
+        }
+        .cards > .card > span{
+            padding: 10px;
         }
 
         /* КАРТОЧКИ мои заявки */
         .req-cards .card img{
             width: 50%;
-
+            border-radius: 8px;
+            height: 100%;
+            object-fit: cover;
         }
         .req-cards .card > div{
             display: flex;
@@ -308,7 +331,7 @@
         }
         .form-img div{
             background: linear-gradient(180deg, #F3D1E4 0%, #DAF7FF 100%);
-            width: 100%;
+            width: calc(100% - 10px);
             height: calc(2 * var(--gu));
             display: flex;
             justify-content: center;
@@ -317,14 +340,28 @@
             font-size: 12px;
             border-radius: 8px;
             cursor:  pointer;
+            padding: 0 5px;
         }
 
-        /* КАРТЧОКИ админ панель */
+        /* КАРТОЧКИ админ панель */
+        .admin{
+            margin-top: 60px;
+        }
         .admin > .card > div{
-            width: calc(2 * var(--gu));
+            width: calc(2 * var(--gu) - 10px);
+            padding: 5px;
         }
         .admin img{
             max-width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* АДМИН-ПАНЕЛЬ */
+        .form-img-input{
+            width: 100%;
+            font-size: 0.8rem;
         }
 
 
@@ -423,7 +460,72 @@
             color: #ebebeb;
         }
 
+        /* МОДАЛЬНОЕ ОКНО */
+        body {
+            overflow-x: hidden;
+        }
+
+        /* фон нашего модального окна */
+        .modalBackground {
+            display: none;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            justify-content: center;
+            top: 0px;
+            /* указываем z-индекс для корректного наслаивания */
+            z-index: 1;
+        }
+
+        /* позиционирование самого модального окна */
+        .modalActive {
+            position: absolute;
+            width: 350px;
+            height: 495px;
+            top: calc(50% - 250px);
+            /* left: calc(50% - 175px); */
+            border-radius: 10px;
+            background-color: rgb(255, 255, 255);
+            cursor: default;
+            padding: 40px 20px;
+        }
+
+        /* кнопочка закрытия модального окна */
+        .modalClose {
+            font-family: var(--font-regular);
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        /* сама картинка кнопочки закрытия */
+        .modalClose img {
+            margin: 3px;
+            width: 24px;
+            height: 24px;
+        }
+
+        /* делаем позиционирование внутренних элементов относительно модального окна */
+        .modalWindow {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 50%;
+            align-content: center;
+            justify-content: space-between;
+        }
+
+
         @media screen and (max-width: 1100px){
+            *{
+                font-size: 0.9rem;
+            }
+            
             header{
                 height: calc(100vh - var(--nav-height));
                 justify-content: center;
@@ -472,6 +574,10 @@
             }
             .cards .card > img{
                 width: 100%;
+                height: auto;
+            }
+            .cards > .card > span{
+            font-size: 1.5rem;
             }
             .cards .card{
                 width: calc(10 * var(--gu) - 10px)!important;
@@ -481,6 +587,22 @@
             }
             footer .nav-menu{
                 width: auto;
+            }
+            footer > nav{
+                height: calc(2 * var(--nav-height));
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+            .admin > .card{
+                height: auto;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .admin > .card > div{
+                width: calc(5 * var(--gu) - 10px);
+            }
+            .form-img > div{
+                height: 100%;
             }
             
         }

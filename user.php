@@ -29,6 +29,10 @@
 
     ?>
 
+
+    <?php require("modal.php");?>
+
+    <div class="content">
     <section class="container my-requests col-2">
         <div class="req-cards">
             <h2>Мои заявки</h2>
@@ -40,7 +44,8 @@
                         <span><?php echo $row['name']?></span>
                         <span class="text-blue"><?php echo $status_dict[$row['status']] ?></span>
                     </div>
-                    <a class="text-purple" href="delete.php?id=<?php echo $row['id'] ?>">Удалить</a>
+                    <a class="text-purple trigger" style="cursor: pointer;" onclick="trigger(<?php echo $row['id'] ?>)">Удалить</a>
+                    <!-- href="delete.php?id=<?php //echo $row['id'] ?>" -->
                 </div>
             </form>
             <?php }; ?>
@@ -82,6 +87,9 @@
         </div>
         
     </section>
+
+    
+
     <?php if (checkadmin()){?>
 
     <section class="container">
@@ -89,7 +97,7 @@
     </section>
     <?php }; ?>
 
-
+    </div>
     <?php
     require('footer.php');?>
 </body>

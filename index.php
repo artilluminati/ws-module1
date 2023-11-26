@@ -18,7 +18,7 @@
     $data = mysqli_fetch_all($data, MYSQLI_ASSOC);
     
     ?>
-
+    <div class="content">
     <header class="col-2 container">
         <div>
             <img src="images/photoshop/1 (2).png">
@@ -97,6 +97,7 @@
             
         </div>
     </section>
+    </div>
 
 
     <?php require('footer.php');?>

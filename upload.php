@@ -52,7 +52,7 @@ if ($uploadOk == 0) {
     
     mysqli_query($connect, $q);
     
-    header("Location: /user.php?out=Файл ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " загружен.");
+    header("Location: /user.php?out=Файл ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " загружен.<br>Данные заявки обновлены.");
   } else {
     header("Location: /user.php?out=Извините, произошла ошибка.");
   }
