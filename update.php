@@ -8,17 +8,27 @@ if (!checkadmin()){
 
 $status = htmlspecialchars($_POST['status']);
 
-$id = $_GET['id'];
+$id = htmlspecialchars($_GET['id']);
 
 // var_dump($status);
 // var_dump($id);
 
 $target_dir = "uploads/";
-$name='myfile_'.date('m-d-Y_hia').
+$name='img_'.date('m-d-Y_hias');
 $start_target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $imageFileType = strtolower(pathinfo($start_target_file,PATHINFO_EXTENSION));
 
 $target_file = $target_dir . $name .".". $imageFileType;
+
+// var_dump($name);
+// echo"<br>";
+// var_dump($target_file);
+// echo"<br>";
+// var_dump($start_target_file);
+// echo"<br>";
+// var_dump($imageFileType);
+// echo"<br>";
+// var_dump($_FILES);
 
 $uploadOk = 1;
 

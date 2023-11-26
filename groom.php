@@ -81,7 +81,7 @@
                 <span><?php echo $cur_user['fio'] ?></span>
                 <span><?php echo $cur_user['email'] ?></span>
                 <span><?php echo $cur_user['login'] ?></span>
-                <input type="file" id="req-admin-img-<?php echo $row['id'] ?>" class="form-img-input" src="" alt="">
+                <input type="file" id="req-admin-img-<?php echo $row['id'] ?>" class="form-img-input" name="fileToUpload">
                 <input type="submit" class="btn" value="Обновить">
             </div>
         </form>

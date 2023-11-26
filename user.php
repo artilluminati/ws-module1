@@ -72,7 +72,7 @@
                         
                     </div>
                 </label>
-                <input type="file" name="fileToUpload" id="req-new-img" class="" accept="image/*">
+                <input type="file" name="fileToUpload" id="req-new-img">
                 <input type="text" name="name" placeholder="Кличка животного">
                 <input type="submit" class="btn" value="Отправить">
                 <?php $out = htmlspecialchars($_GET["out"]);

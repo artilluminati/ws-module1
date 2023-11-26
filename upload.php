@@ -4,10 +4,29 @@ require("db.php");
 $name = $_POST['name'];
 $uid = $_SESSION['uid'];
 
+// $target_dir = "uploads/";
+// $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+// $uploadOk = 1;
+// $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
 $target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$name='img_'.date('m-d-Y_hias');
+$start_target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$imageFileType = strtolower(pathinfo($start_target_file,PATHINFO_EXTENSION));
+
+$target_file = $target_dir . $name .".". $imageFileType;
+
+// var_dump($name);
+// echo"<br>";
+// var_dump($target_file);
+// echo"<br>";
+// var_dump($start_target_file);
+// echo"<br>";
+// var_dump($imageFileType);
+// echo"<br>";
+// var_dump($_FILES);
+
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
@@ -37,7 +56,7 @@ if ($_FILES["fileToUpload"]["size"] > 2000000) {
 if($imageFileType != "jpg" && $imageFileType != "bmp" && $imageFileType != "jpeg") {
     
 //   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-header("Location: /user.php?out=Разрешены изображения только форматов JPG, BMP");
+  header("Location: /user.php?out=Разрешены изображения только форматов JPG, BMP");
   $uploadOk = 0;
 }
 
@@ -52,7 +71,7 @@ if ($uploadOk == 0) {
     
     mysqli_query($connect, $q);
     
-    header("Location: /user.php?out=Файл ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " загружен.<br>Данные заявки обновлены.");
+    header("Location: /user.php?out=Файл ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " загружен. Данные заявки обновлены.");
   } else {
     header("Location: /user.php?out=Извините, произошла ошибка.");
   }
